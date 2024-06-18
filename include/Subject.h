@@ -2,9 +2,9 @@
 // Created by 4s4r on 04.06.2024.
 //
 #include <iostream>
-#ifndef TELEGRAMBOT_SUBJECT_H
-#define TELEGRAMBOT_SUBJECT_H
-
+#include <string>
+#ifndef INCLUDE_SUBJECT_H_
+#define INCLUDE_SUBJECT_H_
 
 class Subject {
   std::string professor_name;
@@ -14,34 +14,58 @@ class Subject {
   std::string subject_name;
 
  public:
-  Subject();
+  Subject() : subject_id(0) {}
 
-  ~Subject();
+  ~Subject() = default;
 
-  void set_professor_name(std::string name);
+  void set_professor_name(const std::string& name) {
+    professor_name = name;
+  }
 
-  void set_professor_email(std::string email);
+  void set_professor_email(const std::string& email) {
+    professor_email = email;
+  }
 
-  void set_description(std::string desc);
+  void set_description(const std::string& desc) {
+    description = desc;
+  }
 
-  void set_subject_id(size_t id);
+  void set_subject_id(size_t id) {
+    subject_id = id;
+  }
 
-  void set_subject_name(std::string name);
+  void set_subject_name(const std::string& name) {
+    subject_name = name;
+  }
 
+  std::string get_professor_name() const {
+    return professor_name;
+  }
 
-  std::string get_professor_name();
+  std::string get_professor_email() const {
+    return professor_email;
+  }
 
-  std::string get_professor_email();
+  std::string get_description() const {
+    return description;
+  }
 
-  std::string get_description();
+  size_t get_subject_id() const {
+    return subject_id;
+  }
 
-  size_t get_subject_id();
+  std::string get_subject_name() const {
+    return subject_name;
+  }
 
-  std::string get_subject_name();
-
-  std::string print_all();
-
+  std::string print_all() const {
+    std::string all_info;
+    all_info = "Название дисциплины: " + get_subject_name() + '\n';
+    all_info += "ФИ(О) профессора: " + get_professor_name() + '\n';
+    all_info += "Электронная почта профессора: " + get_professor_email();
+    all_info += "\nОписание: " + get_description();
+    return all_info;
+  }
 };
 
-
-#endif //TELEGRAMBOT_SUBJECT_H
+#endif  // INCLUDE_SUBJECT_H_
