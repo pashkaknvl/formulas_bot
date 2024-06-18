@@ -8,16 +8,18 @@
 #include "../include/state.h"
 #include "../include/utils.h"
 
-using namespace keyboards;
+using keyboards::stop_making_discipline_keyboard;
+using keyboards::making_discipline_keyboard;
+using keyboards::discipline_confirmation_keyboard;
+using keyboards::dont_add_description_keyboard;
 
 int main() {
   keyboards::init_keyboards();
   db::init_conn();
-
   TgBot::Bot bot(consts::TOKEN);
-  bot.getEvents().onCallbackQuery([&bot, &stop_making_discipline_keyboard,
-                                   &discipline_confirmation_keyboard,
-                                   &dont_add_description_keyboard](
+  bot.getEvents().onCallbackQuery([&bot, stop_making_discipline_keyboard,
+                                   discipline_confirmation_keyboard,
+                                   dont_add_description_keyboard](
                                       const TgBot::CallbackQuery::Ptr& query) {
     int64_t userId = query->message->chat->id;
     if (query->data == button_data::make_discipline) {
