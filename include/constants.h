@@ -105,6 +105,72 @@ size_t max_description_len = 500;
 }  // namespace lengths
 
 namespace keyboards {
+
+TgBot::InlineKeyboardButton::Ptr go_back_to_main_menu(
+    new TgBot::InlineKeyboardButton{
+        button_names::go_back_to_main_menu,
+        {},
+        button_data::go_back_to_main_menu,
+    });    
+
+TgBot::InlineKeyboardButton::Ptr delete_discipline(
+    new TgBot::InlineKeyboardButton{
+        button_names::delete_discipline,
+        {},
+        button_data::delete_discipline,
+    });     
+
+TgBot::InlineKeyboardButton::Ptr change_discipline_settings(
+    new TgBot::InlineKeyboardButton{
+        button_names::change_discipline_settings,
+        {},
+        button_data::change_discipline_settings,
+    }); 
+
+TgBot::InlineKeyboardButton::Ptr elements_of_control(
+    new TgBot::InlineKeyboardButton{
+        button_names::elements_of_control,
+        {},
+        button_data::elements_of_control,
+    }); 
+
+TgBot::InlineKeyboardButton::Ptr evaluate_with_formula(
+    new TgBot::InlineKeyboardButton{
+        button_names::evaluate_with_formula,
+        {},
+        button_data::evaluate_with_formula,
+    }); 
+
+TgBot::InlineKeyboardButton::Ptr discipline_info(
+    new TgBot::InlineKeyboardButton{
+        button_names::discipline_info,
+        {},
+        button_data::discipline_info,
+    });        
+const TgBot::InlineKeyboardMarkup::Ptr discipline_actions_keyboard(
+    new TgBot::InlineKeyboardMarkup);    
+    
+TgBot::InlineKeyboardButton::Ptr delete_group(
+    new TgBot::InlineKeyboardButton{
+        button_names::delete_group,
+        {},
+        button_data::delete_group,
+    });
+
+TgBot::InlineKeyboardButton::Ptr change_group_settings(
+    new TgBot::InlineKeyboardButton{
+        button_names::change_group_settings,
+        {},
+        button_data::change_group_settings,
+    });
+    
+TgBot::InlineKeyboardButton::Ptr view_disciplines(
+    new TgBot::InlineKeyboardButton{
+        button_names::view_disciplines,
+        {},
+        button_data::view_disciplines,
+    });
+
 // making discipline
 TgBot::InlineKeyboardButton::Ptr make_discipline(
     new TgBot::InlineKeyboardButton{
@@ -112,16 +178,17 @@ TgBot::InlineKeyboardButton::Ptr make_discipline(
         {},
         button_data::make_discipline,
     });
-const TgBot::InlineKeyboardMarkup::Ptr making_discipline_keyboard(
+const TgBot::InlineKeyboardMarkup::Ptr making_discipline_keyboard( 
+    // я бы переименовал в group_actions_keyboard и в неё засунуть кнопки начиная с delete_group
     new TgBot::InlineKeyboardMarkup);
 
-TgBot::InlineKeyboardButton::Ptr stop_making_discipline(
+TgBot::InlineKeyboardButton::Ptr stop_making_discipline( // не нужно вроде как
     new TgBot::InlineKeyboardButton{
         button_names::stop_making_discipline,
         {},
         button_data::stop_making_discipline,
     });
-const TgBot::InlineKeyboardMarkup::Ptr stop_making_discipline_keyboard(
+const TgBot::InlineKeyboardMarkup::Ptr stop_making_discipline_keyboard( 
     new TgBot::InlineKeyboardMarkup);
 
 TgBot::InlineKeyboardButton::Ptr discipline_confirmation_yes(
@@ -146,7 +213,8 @@ TgBot::InlineKeyboardButton::Ptr dont_add_description(
         button_data::dont_add_description,
     });
 const TgBot::InlineKeyboardMarkup::Ptr dont_add_description_keyboard(
-    new TgBot::InlineKeyboardMarkup);
+    new TgBot::InlineKeyboardMarkup); 
+
 
 void init_keyboards() {
   making_discipline_keyboard->inlineKeyboard = {{std::move(make_discipline)}};
